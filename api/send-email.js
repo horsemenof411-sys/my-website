@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         service_id: process.env.EMAILJS_SERVICE_ID,
         template_id: process.env.EMAILJS_TEMPLATE_ID,
-        user_id: process.env.EMAILJS_PUBLIC_KEY,
+        public_key: process.env.EMAILJS_PUBLIC_KEY,  // ✔ FIXED
         template_params: {
           title: "New Contact Message",
           name,
@@ -29,14 +29,15 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error("Email failed");
+      const errText = await response.text();
+      throw new Error(errText);
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({
       error: "Email not sent",
-      details: error.message
+      details: error.message,
     });
   }
 }
