@@ -1,3 +1,9 @@
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -5,7 +11,6 @@ export default async function handler(req, res) {
 
   const { name, email, message } = req.body;
 
-  // Email you want to receive messages on
   const to = "horsemanof411@gmail.com";
 
   try {
@@ -15,9 +20,9 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        service_id: "service_id_here",
-        template_id: "template_id_here",
-        user_id: "user_id_here",
+        service_id: "service_xxxxxx",    // 🔴 Replace with your real ID
+        template_id: "template_xxxxxx",  // 🔴 Replace with your real ID
+        user_id: "xxxxxx",               // 🔴 Replace with your real User ID
         template_params: {
           name,
           email,
@@ -29,6 +34,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (err) {
+    console.error(err);
     return res.status(500).json({ error: "Failed to send email" });
   }
 }
