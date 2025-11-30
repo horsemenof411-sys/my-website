@@ -3,7 +3,7 @@ import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Gallery from "./pages/Gallery.jsx";
-import Contact from "./pages/Contact.jsx";
+import Contact from "./pages/Contact.js";
 import Services from "./pages/Services.jsx";
 function App() {
   return (
