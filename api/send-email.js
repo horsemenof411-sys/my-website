@@ -16,9 +16,9 @@ export default async function handler(req, res) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        service_id: process.env.service_n2g2v3t,
-        template_id: process.env.template_2ke7l9z,
-        public_key: process.env.s4abuoyG20O-ya9l8,  // ✔ correct field
+        service_id: process.env.EMAILJS_SERVICE_ID,
+        template_id: process.env.EMAILJS_TEMPLATE_ID,
+        public_key: process.env.EMAILJS_PUBLIC_KEY,
         template_params: {
           title: "New Contact Message",
           name,
